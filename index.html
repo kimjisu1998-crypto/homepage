@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5f2">
+  <meta name="description" content="데이터로 더 나은 질문과 결정을 만드는 데이터 사이언티스트 김지수의 포트폴리오입니다.">
+  <title>김지수 | Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3f5f2;
+      --surface: #ffffff;
+      --ink: #172320;
+      --muted: #6e7975;
+      --line: #dce2dd;
+      --green: #b8f35a;
+      --green-dark: #355d20;
+      --coral: #fc795a;
+      --blue: #5184e8;
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", "Noto Sans KR", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .mark { display: grid; width: 30px; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--green); font-size: 14px; }
+    .wordmark span:last-child { font-size: 14px; }
+    .nav { display: flex; gap: 34px; align-items: center; color: #4c5853; font-size: 13px; font-weight: 600; }
+    .nav a:hover, .text-link:hover { color: var(--green-dark); }
+    .nav-contact { padding: 11px 16px; border: 1px solid var(--ink); border-radius: 3px; color: var(--ink); }
+    .nav-contact:hover { color: var(--paper) !important; background: var(--ink); }
+
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 54px; align-items: center; min-height: 555px; padding-block: 62px 72px; }
+    .eyebrow, .section-kicker, .project-type, .metric-label, .chart-caption, .footer-note { font: 11px var(--mono); letter-spacing: 0; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; color: #5b6b63; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #5aa840; box-shadow: 0 0 0 4px #5aa84020; }
+    h1 { max-width: 620px; margin: 22px 0 20px; font-size: clamp(54px, 6.6vw, 83px); line-height: .98; letter-spacing: -.055em; }
+    h1 span { color: #71807a; }
+    .hero-copy { max-width: 490px; margin: 0; color: #5a6862; font-size: 16px; line-height: 1.85; word-break: keep-all; }
+    .hero-actions { display: flex; gap: 12px; align-items: center; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 17px; border: 1px solid var(--ink); border-radius: 3px; font-size: 13px; font-weight: 700; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--ink); color: white; }
+    .button-primary:hover { background: #304039; }
+    .button-quiet { border-color: transparent; }
+    .button-quiet:hover { background: #e7ebe7; }
+    .arrow { font-size: 16px; line-height: 1; }
+    .hero-footnote { margin: 25px 0 0; color: #89928d; font: 10px var(--mono); }
+
+    .visual { position: relative; min-height: 370px; padding: 22px; border: 1px solid #dce2dd; background: #e9ede8; overflow: hidden; }
+    .visual::before { content: ""; position: absolute; width: 200px; height: 200px; right: -98px; top: -110px; border: 1px solid #b4beb7; border-radius: 50%; box-shadow: 0 0 0 18px #ffffff38, 0 0 0 38px #ffffff26; }
+    .chart-window { position: relative; z-index: 1; padding: 17px 18px 15px; background: var(--surface); box-shadow: 0 13px 35px #24352c12; }
+    .chart-head { display: flex; justify-content: space-between; align-items: flex-start; }
+    .chart-caption { color: #718078; font-size: 9px; }
+    .chart-title { margin: 7px 0 0; font-size: 14px; font-weight: 700; }
+    .chart-tag { padding: 6px 8px; background: #eff6e6; color: #47612e; font: 9px var(--mono); }
+    .chart-svg { display: block; width: 100%; height: 184px; margin-top: 13px; overflow: visible; }
+    .chart-bottom { display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #edf0ed; color: #78827d; font: 9px var(--mono); }
+    .chart-bottom strong { color: var(--ink); font-weight: 500; }
+    .float-note { position: absolute; right: 15px; bottom: 17px; z-index: 2; width: 152px; padding: 14px; background: var(--green); transform: rotate(2deg); }
+    .float-note small { display: block; color: #45533c; font: 9px var(--mono); }
+    .float-note strong { display: block; margin-top: 5px; font-size: 12px; line-height: 1.5; }
+    .float-note span { color: #667454; font-size: 10px; }
+
+    .ticker { border-block: 1px solid var(--line); overflow: hidden; }
+    .ticker-inner { display: flex; justify-content: space-between; gap: 22px; padding: 17px 0; color: #66716b; font: 10px var(--mono); white-space: nowrap; }
+    .ticker-inner span { display: inline-flex; align-items: center; gap: 10px; }
+    .ticker-inner span::before { content: "+"; color: #78a943; font-size: 13px; }
+
+    section.content-section { padding-block: 100px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+    .section-kicker { color: #728078; }
+    h2 { margin: 10px 0 0; font-size: clamp(32px, 4vw, 44px); letter-spacing: -.04em; line-height: 1.1; }
+    .section-description { max-width: 375px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; word-break: keep-all; }
+    .filters { display: flex; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .filter-button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: #66716b; font-size: 11px; cursor: pointer; }
+    .filter-button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: white; }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project { min-width: 0; border: 1px solid var(--line); background: var(--surface); transition: transform .2s ease, box-shadow .2s ease; animation: appear .4s both; }
+    .project:hover { transform: translateY(-4px); box-shadow: 0 14px 30px #24352c0e; }
+    .project[hidden] { display: none; }
+    .project-visual { position: relative; height: 190px; padding: 17px; overflow: hidden; }
+    .project-visual.mint { background: #e5f0db; }
+    .project-visual.blue { background: #e4ebf7; }
+    .project-visual.peach { background: #f6e6dc; }
+    .project-visual .mini-label { position: absolute; top: 15px; left: 16px; color: #68766e; font: 9px var(--mono); }
+    .mini-chart { position: absolute; inset: 45px 17px 16px; width: calc(100% - 34px); height: calc(100% - 61px); }
+    .project-visual .mini-number { position: absolute; top: 39px; left: 18px; font-size: 28px; font-weight: 800; letter-spacing: -.05em; }
+    .project-visual .mini-sub { position: absolute; top: 75px; left: 19px; color: #728078; font: 8px var(--mono); }
+    .bars { position: absolute; right: 22px; bottom: 17px; display: flex; align-items: end; gap: 7px; height: 83px; }
+    .bars i { display: block; width: 13px; background: #81a953; }
+    .blue .bars i { background: #6487c9; }
+    .peach .bars i { background: #e78c68; }
+    .project-body { padding: 18px 18px 17px; }
+    .project-meta { display: flex; justify-content: space-between; align-items: center; color: #77827c; }
+    .project-type { font-size: 9px; }
+    .project-year { font: 9px var(--mono); }
+    .project h3 { margin: 12px 0 7px; font-size: 17px; letter-spacing: -.03em; }
+    .project p { min-height: 45px; margin: 0; color: #68746e; font-size: 11px; line-height: 1.7; word-break: keep-all; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+    .tags span { padding: 5px 7px; background: #f1f3f0; color: #58645d; font: 9px var(--mono); }
+    .data-note { margin: 16px 0 0; color: #89928d; font-size: 10px; }
+
+    .about { display: grid; grid-template-columns: .82fr 1.18fr; gap: 90px; border-top: 1px solid var(--line); }
+    .about-copy { max-width: 650px; color: #5e6a64; font-size: 14px; line-height: 1.95; word-break: keep-all; }
+    .about-copy p { margin: 0 0 14px; }
+    .about-copy strong { color: var(--ink); }
+    .toolbox { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; margin-top: 27px; border-top: 1px solid var(--line); }
+    .tool-row { display: flex; justify-content: space-between; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 11px; }
+    .tool-row span:first-child { font-weight: 700; }
+    .tool-row span:last-child { color: #738078; text-align: right; }
+
+    .contact { display: flex; justify-content: space-between; align-items: center; gap: 40px; padding: 42px 46px; background: var(--ink); color: white; }
+    .contact .section-kicker { color: #bdc8c1; }
+    .contact h2 { margin-top: 11px; font-size: 36px; }
+    .contact p { margin: 10px 0 0; color: #b9c4bd; font-size: 12px; }
+    .contact-actions { display: flex; align-items: center; gap: 9px; }
+    .contact .button { border-color: #75817a; color: white; white-space: nowrap; }
+    .contact .button-primary { border-color: var(--green); background: var(--green); color: var(--ink); }
+    .contact .button-quiet:hover { background: #2a3630; }
+    .footer { display: flex; justify-content: space-between; padding: 28px 0 34px; color: #79847e; font-size: 10px; }
+    .footer-note { font-size: 9px; }
+    .toast { position: fixed; right: 24px; bottom: 24px; z-index: 10; padding: 12px 16px; background: var(--ink); color: white; font-size: 12px; opacity: 0; transform: translateY(8px); pointer-events: none; transition: .2s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 850px) {
+      .shell { width: min(100% - 40px, 650px); }
+      .hero { grid-template-columns: 1fr; gap: 38px; padding-block: 66px 54px; }
+      .hero-copy { max-width: 560px; }
+      .visual { min-height: 340px; }
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .about { grid-template-columns: 1fr; gap: 24px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 14px; }
+      .section-description { max-width: 500px; }
+      .contact { align-items: start; flex-direction: column; gap: 24px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: calc(100% - 36px); }
+      .topbar { height: 66px; }
+      .nav { gap: 17px; font-size: 11px; }
+      .nav a:nth-child(2) { display: none; }
+      .nav-contact { padding: 9px 11px; }
+      .wordmark span:last-child { font-size: 12px; }
+      .hero { min-height: auto; gap: 32px; padding-block: 54px 43px; }
+      h1 { font-size: 58px; }
+      .hero-copy { font-size: 14px; }
+      .hero-actions { gap: 5px; }
+      .button { min-height: 43px; padding-inline: 13px; font-size: 11px; }
+      .visual { min-height: 300px; padding: 14px; }
+      .chart-window { padding: 14px 13px 12px; }
+      .chart-svg { height: 155px; }
+      .float-note { right: 9px; bottom: 9px; width: 137px; padding: 11px; }
+      .ticker-inner { justify-content: flex-start; gap: 24px; overflow: hidden; }
+      section.content-section { padding-block: 72px; }
+      .section-heading { margin-bottom: 25px; }
+      .projects { grid-template-columns: 1fr; gap: 12px; }
+      .project-visual { height: 205px; }
+      .project p { min-height: 0; }
+      .filters { gap: 6px; }
+      .filter-button { padding: 8px 10px; font-size: 10px; }
+      .toolbox { grid-template-columns: 1fr; }
+      .contact { padding: 29px 22px; }
+      .contact h2 { font-size: 30px; }
+      .contact-actions { flex-wrap: wrap; }
+      .footer { gap: 14px; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar shell">
+    <a class="wordmark" href="#top" aria-label="김지수, 첫 화면으로 이동"><span class="mark">J</span><span>JISU KIM</span></a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#work">프로젝트</a>
+      <a href="#about">소개</a>
+      <a class="nav-contact" href="#contact">연락하기 <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">DATA SCIENTIST · SEOUL, KR</div>
+          <h1 id="hero-title">김지수<br><span>Data Scientist</span></h1>
+          <p class="hero-copy">복잡한 데이터에서 더 나은 질문을 찾고, 분석을 실제 의사결정으로 연결합니다. 통계적 사고와 제품 감각 사이에서 쓸모 있는 답을 만듭니다.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">프로젝트 보기 <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#contact">함께 이야기하기 <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-footnote">CURRENTLY EXPLORING · PRODUCT ANALYTICS / MACHINE LEARNING</p>
+        </div>
+        <div class="visual" aria-label="월별 활성 사용자 예시 차트">
+          <div class="chart-window">
+            <div class="chart-head">
+              <div><div class="chart-caption">PRODUCT ANALYTICS / SAMPLE DATA</div><div class="chart-title">월별 활성 사용자 추이</div></div>
+              <span class="chart-tag">+18.6% QoQ</span>
+            </div>
+            <svg class="chart-svg" viewBox="0 0 460 190" role="img" aria-label="샘플 데이터에서 월별 활성 사용자가 증가하는 선 그래프">
+              <g stroke="#e9eeea" stroke-width="1"><path d="M42 25H448M42 65H448M42 105H448M42 145H448"/></g>
+              <g fill="#9ba69f" font-family="DM Mono, monospace" font-size="9"><text x="4" y="28">12k</text><text x="4" y="68">9k</text><text x="4" y="108">6k</text><text x="4" y="148">3k</text><text x="40" y="174">JAN</text><text x="113" y="174">FEB</text><text x="186" y="174">MAR</text><text x="259" y="174">APR</text><text x="332" y="174">MAY</text><text x="405" y="174">JUN</text></g>
+              <path d="M45 132 C74 128 88 118 118 121 S167 104 191 108 S239 89 264 96 S311 65 337 74 S383 46 410 51 S433 35 447 34 L447 155 L45 155Z" fill="#b8f35a" opacity=".32"/>
+              <path d="M45 132 C74 128 88 118 118 121 S167 104 191 108 S239 89 264 96 S311 65 337 74 S383 46 410 51 S433 35 447 34" fill="none" stroke="#466f2a" stroke-width="3" stroke-linecap="round"/>
+              <g fill="#fff" stroke="#466f2a" stroke-width="2"><circle cx="45" cy="132" r="4"/><circle cx="118" cy="121" r="4"/><circle cx="191" cy="108" r="4"/><circle cx="264" cy="96" r="4"/><circle cx="337" cy="74" r="4"/><circle cx="410" cy="51" r="4"/><circle cx="447" cy="34" r="4"/></g>
+            </svg>
+            <div class="chart-bottom"><span>COHORT: ALL USERS</span><strong>12,480 active</strong><span>UPDATED JUN 2025</span></div>
+          </div>
+          <div class="float-note"><small>KEY QUESTION</small><strong>성장은 어디서<br>시작됐을까요?</strong><span>→ 코호트별로 살펴보기</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ticker" aria-label="전문 분야">
+      <div class="ticker-inner shell"><span>PRODUCT ANALYTICS</span><span>EXPERIMENT DESIGN</span><span>MACHINE LEARNING</span><span>DATA STORYTELLING</span></div>
+    </div>
+
+    <section class="content-section shell" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">SELECTED WORK · 01—03</div><h2 id="work-title">데이터로 풀어본 질문</h2></div>
+        <p class="section-description">문제를 정의하고, 검증 가능한 방법을 선택해, 다음 행동으로 이어지는 결과를 만듭니다.</p>
+      </div>
+      <div class="filters" role="group" aria-label="프로젝트 유형 필터">
+        <button class="filter-button" type="button" data-filter="all" aria-pressed="true">전체</button>
+        <button class="filter-button" type="button" data-filter="analytics" aria-pressed="false">분석</button>
+        <button class="filter-button" type="button" data-filter="ml" aria-pressed="false">머신러닝</button>
+      </div>
+      <div class="projects">
+        <article class="project" data-category="analytics">
+          <div class="project-visual mint">
+            <span class="mini-label">CUSTOMER COHORT / SAMPLE</span><span class="mini-number">+24%</span><span class="mini-sub">30-DAY RETENTION</span>
+            <div class="bars" aria-hidden="true"><i style="height:37%"></i><i style="height:52%"></i><i style="height:43%"></i><i style="height:69%"></i><i style="height:61%"></i><i style="height:86%"></i><i style="height:100%"></i></div>
+          </div>
+          <div class="project-body"><div class="project-meta"><span class="project-type">PRODUCT ANALYTICS</span><span class="project-year">CASE 01</span></div><h3>첫 경험과 재방문 사이</h3><p>가입 첫 주의 행동 패턴을 코호트로 나눠 재방문과 연결되는 경험을 탐색합니다.</p><div class="tags"><span>SQL</span><span>Python</span><span>Retention</span></div></div>
+        </article>
+        <article class="project" data-category="ml">
+          <div class="project-visual blue">
+            <span class="mini-label">DEMAND FORECAST / SAMPLE</span><span class="mini-number">7 days</span><span class="mini-sub">FORECAST HORIZON</span>
+            <svg class="mini-chart" viewBox="0 0 300 130" role="img" aria-label="실제값과 예측값이 가까워지는 예시 수요 예측 그래프"><path d="M0 100 C22 91 31 65 55 76 S92 103 112 71 S151 39 171 60 S203 79 226 38 S266 32 300 15" fill="none" stroke="#94a7cf" stroke-width="2" stroke-dasharray="5 5"/><path d="M0 105 C22 83 31 57 55 68 S92 94 112 62 S151 52 171 47 S203 68 226 31 S266 45 300 20" fill="none" stroke="#456cae" stroke-width="3"/><path d="M0 118H300M0 81H300M0 44H300" stroke="#ffffff" stroke-width="1"/></svg>
+          </div>
+          <div class="project-body"><div class="project-meta"><span class="project-type">TIME SERIES</span><span class="project-year">CASE 02</span></div><h3>수요를 미리 읽는 모델</h3><p>계절성과 프로모션 효과를 분리해 예측 오차가 커지는 구간을 진단합니다.</p><div class="tags"><span>Forecasting</span><span>XGBoost</span><span>Python</span></div></div>
+        </article>
+        <article class="project" data-category="analytics">
+          <div class="project-visual peach">
+            <span class="mini-label">A/B EXPERIMENT / SAMPLE</span><span class="mini-number">A → B</span><span class="mini-sub">EXPERIMENT DESIGN</span>
+            <svg class="mini-chart" viewBox="0 0 300 130" role="img" aria-label="두 실험군의 전환율 신뢰 구간 비교 예시"><path d="M45 54V99M39 54H51M39 99H51M145 39V88M139 39H151M139 88H151M245 26V75M239 26H251M239 75H251" stroke="#ce7959" stroke-width="2"/><circle cx="45" cy="76" r="6" fill="#ce7959"/><circle cx="145" cy="63" r="6" fill="#ce7959"/><circle cx="245" cy="50" r="6" fill="#ce7959"/><path d="M45 76H145M145 63H245" stroke="#ce7959" stroke-width="1" stroke-dasharray="3 4"/><g fill="#837a73" font-family="DM Mono, monospace" font-size="9"><text x="37" y="119">A</text><text x="137" y="119">B</text><text x="237" y="119">C</text></g></svg>
+          </div>
+          <div class="project-body"><div class="project-meta"><span class="project-type">EXPERIMENTATION</span><span class="project-year">CASE 03</span></div><h3>작은 변화의 효과 측정</h3><p>실험 설계부터 신뢰 구간 해석까지, 우연과 실제 효과를 구분하는 과정을 정리합니다.</p><div class="tags"><span>A/B Test</span><span>Statistics</span><span>SQL</span></div></div>
+        </article>
+      </div>
+      <p class="data-note">* 차트와 지표는 레이아웃을 위한 예시 데이터입니다. 실제 프로젝트 내용으로 교체해 주세요.</p>
+    </section>
+
+    <section class="content-section shell about" id="about" aria-labelledby="about-title">
+      <div><div class="section-kicker">A LITTLE ABOUT ME</div><h2 id="about-title">좋은 분석은<br>좋은 질문에서.</h2></div>
+      <div>
+        <div class="about-copy"><p>저는 <strong>데이터가 필요한 사람과 데이터 사이</strong>를 연결하는 일을 좋아합니다. 모델의 복잡함보다 문제에 맞는 방법인지, 결과를 다음 행동으로 설명할 수 있는지를 먼저 생각합니다.</p><p>탐색적 분석과 실험 설계부터 예측 모델링, 이해하기 쉬운 시각화까지 문제의 처음과 끝을 함께 봅니다.</p></div>
+        <div class="toolbox" aria-label="주요 도구와 역량"><div class="tool-row"><span>분석</span><span>Python · SQL · R</span></div><div class="tool-row"><span>모델링</span><span>scikit-learn · XGBoost</span></div><div class="tool-row"><span>시각화</span><span>Tableau · matplotlib</span></div><div class="tool-row"><span>관심 분야</span><span>실험 · 제품 · 예측</span></div></div>
+      </div>
+    </section>
+
+    <section class="shell contact" id="contact" aria-labelledby="contact-title">
+      <div><div class="section-kicker">LET'S CONNECT</div><h2 id="contact-title">함께 데이터 이야기를 해요.</h2><p>프로젝트, 협업, 좋은 질문 모두 환영합니다.</p></div>
+      <div class="contact-actions"><a class="button button-primary" href="mailto:hello@jisukim.dev">이메일 보내기 <span aria-hidden="true">↗</span></a><button class="button button-quiet" type="button" id="copy-email" data-email="hello@jisukim.dev">이메일 복사</button></div>
+    </section>
+  </main>
+
+  <footer class="shell footer"><span>© 2025 JISU KIM</span><span class="footer-note">MADE WITH CURIOSITY &amp; DATA</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">이메일 주소를 복사했습니다.</div>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projects = document.querySelectorAll(".project");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        projects.forEach((project) => {
+          project.hidden = filter !== "all" && project.dataset.category !== filter;
+        });
+      });
+    });
+
+    const copyButton = document.querySelector("#copy-email");
+    const toast = document.querySelector("#toast");
+    let toastTimer;
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(copyButton.dataset.email);
+        toast.textContent = "이메일 주소를 복사했습니다.";
+      } catch {
+        toast.textContent = copyButton.dataset.email;
+      }
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    });
+  </script>
+</body>
+</html>
